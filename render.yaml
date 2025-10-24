@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: tribe-ai-app
+    env: docker
+    repo: https://github.com/Lunamae24/Tribe-ai-app
+    branch: main
+    plan: free
+    buildCommand: ""
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: manual
+      - key: SECRET_KEY
+        sync: manual
+      - key: DATABASE_URL
+        sync: manual
+      - key: ANTHROPIC_API_KEY
+        sync: manual
+      - key: SENTRY_DSN
+        sync: manual
+    healthCheckPath: /health
+
+databases:
+  - name: tribe-ai-db
+    engine: postgres
+    plan: starter
+    region: oregon
+
+caches:
+  - name: tribe-ai-redis
+    engine: redis
+    plan: starter
+    region: oregon
