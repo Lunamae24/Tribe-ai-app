@@ -1,58 +1,25 @@
-# Tribe AI Platform
+# Tribe-ai-app
 
-A comprehensive multi-model AI platform that brings together the power of GPT-5, Claude, and Gemini in one unified interface.
+This repository now contains a minimal static placeholder site and a CNAME file to use GitHub Pages with the custom domain `tribe-ai.it.com`.
 
-## 🚀 Features
+What I added
+- `index.html` — minimal static site so Pages can serve content immediately.
+- `CNAME` — contains `tribe-ai.it.com` so GitHub Pages knows the custom domain.
 
-- **AI Chat**: Multi-model support (GPT-5, Claude 4, Gemini 2.5 Pro)
-- **Image Generation**: OpenAI gpt-image-1 for stunning visuals
-- **Code Assistant**: GPT-5 powered code generation
-- **Dual Auth**: JWT + Google OAuth authentication
+DNS setup you must do
+1. Add a CNAME record for `tribe-ai` (or `tribe-ai.it.com` if your DNS panel requires the full name):
+   - Type: CNAME
+   - Host / Name: `tribe-ai` (or `tribe-ai.it.com`)
+   - Value / Target: `Lunamae24.github.io`
+   - TTL: default
+2. If you use Cloudflare, set the record to **DNS only** (grey cloud) — do not proxy (orange cloud) otherwise GitHub Pages TLS will not work.
 
-## 🛠️ Tech Stack
+After DNS is configured
+- Wait for DNS propagation (can be minutes to 24–48 hours).
+- Go to repository Settings → Pages and enable "Enforce HTTPS" once GitHub issues the certificate.
 
-- **Frontend**: React 19, Tailwind CSS, shadcn/ui
-- **Backend**: FastAPI, Motor (MongoDB)
-- **Database**: MongoDB
-- **AI**: OpenAI, Anthropic, Google (via Emergent LLM key)
+If you want next
+- I can set up a GitHub Actions workflow to build a static site (e.g., from a React app) and deploy to Pages.
+- Or I can scaffold a Python app and create a deployment workflow to Render, Railway, or a Docker-based host.
 
-## 📦 Quick Start
-
-### Backend
-\`\`\`bash
-cd backend
-pip install -r requirements.txt
-uvicorn server:app --reload
-\`\`\`
-
-### Frontend
-\`\`\`bash
-cd frontend
-yarn install
-yarn start
-\`\`\`
-
-## ⚙️ Configuration
-
-Create \`.env\` files:
-
-**backend/.env:**
-\`\`\`
-MONGO_URL=mongodb://localhost:27017
-DB_NAME=ai_platform_db
-JWT_SECRET=your-secure-secret
-EMERGENT_LLM_KEY=your-key
-\`\`\`
-
-**frontend/.env:**
-\`\`\`
-REACT_APP_BACKEND_URL=http://localhost:8001
-\`\`\`
-
-## 🔗 Live
-
-**Website**: https://tribe-ai.it.com
-
----
-
-Built by [donaldderouen24-code](https://github.com/donaldderouen24-code)
+Created by GitHub Copilot on request of @Lunamae24.
